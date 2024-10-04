@@ -61,4 +61,16 @@ class MainTest {
   }
 
   // TODO: Create your test(s) below. /////////////////////////////////////////
+  @Test
+  void createBigrams() {
+    Main.reset();
+    Connection db = Main.createConnection();
+    assertDoesNotThrow(
+            () -> {
+              int countWord = Main.getWordCount(db);
+              assertTrue(countWord == 0);
+              db.close();
+            }
+    );
+  }
 }
