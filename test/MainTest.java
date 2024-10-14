@@ -67,8 +67,9 @@ class MainTest {
     Connection db = Main.createConnection();
     assertDoesNotThrow(
             () -> {
-              int countWord = Main.getWordCount(db);
-              assertTrue(countWord == 0);
+              String src = "Hello World hello world ";
+              Main.createBigrams(db, src);
+              assertEquals(2, Main.getWordCount(db));
               db.close();
             }
     );
